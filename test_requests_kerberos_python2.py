@@ -44,9 +44,12 @@ def json_rpc(method_name, *args, **kwargs):
         "id": 0,
     }
 
+    payload = json.dumps(payload)
+    print payload
+
     response = requests.post(settings.KOMPASSI_IPA_JSONRPC,
         auth=HTTPKerberosAuth(),
-        data=json.dumps(payload),
+        data=payload,
         headers=headers,
         verify=settings.KOMPASSI_IPA_CACERT_PATH,
     )
