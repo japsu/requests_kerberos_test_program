@@ -10,6 +10,12 @@ import requests
 from requests_kerberos import HTTPKerberosAuth
 
 
+import logging
+logging.basicConfig()
+logging.getLogger('requests').setLevel(logging.DEBUG)
+logging.getLogger('requests_kerberos').setLevel(logging.DEBUG)
+
+
 class Settings(object):
     """
     Fake django.conf.settings
