@@ -45,6 +45,8 @@ def json_rpc(method_name, *args, **kwargs):
         verify=settings.KOMPASSI_IPA_CACERT_PATH,
     )
 
+    print response.content
+
     try:
         response.raise_for_status()
     except requests.HTTPError, e:
@@ -60,12 +62,12 @@ def json_rpc(method_name, *args, **kwargs):
 
 
 def main():
-    print json_rpc('user_show', 'japsu', dict(
+    print json_rpc('user_show', settings.USERNAME,
         raw=False,
         all=False,
         version='2.46',
         rights=False,
-    ))
+    )
 
 
 if __name__ == '__main__':
